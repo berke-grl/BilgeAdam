@@ -1,28 +1,20 @@
+import entity.Person;
+import services.PersonDatabaseOperations;
 
 public class Main {
+
     public static void main(String[] args) {
 
-        Qashqai qashqai = new Qashqai(VehicleType.SUV.toString(), 220, 4, 65, "low fuel warning",
-                false, 21, 0, 30);
+        SqlDatabase sqlDatabase = new SqlDatabase();
 
-        //speed Configurations
-        qashqai.speedUp(25);
-        qashqai.speedUp(50);
+        // Dummy datas
+        sqlDatabase.add(new Person(1,"Berke","Gürel",22,true));
+        sqlDatabase.add(new Person(2,"Selim","Dinler",32,true));
+        sqlDatabase.add(new Person(3,"Aktan","Sanhal",26,true));
+        sqlDatabase.add(new Person(4,"Ali","Yılmaz",17,false));
 
-        //wheel pressure configurations (it will be divided by 2 because of the override method in qashqai class)
-        qashqai.inflateWheels(4);
-
-        //you can not set new vehicle type after instance creation because this field is FINAL
-        //qashqai.vehicleType = "sedan";
+        sqlDatabase.showAll();
 
 
-        System.out.println(qashqai);
     }
-}
-enum VehicleType{
-    SUV,
-    SEDAN,
-    HATCHBACK,
-    TRUCK,
-    STATION_WAGON
 }
