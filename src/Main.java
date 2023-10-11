@@ -1,6 +1,7 @@
 import entity.Person;
 import services.PersonDatabaseOperations;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -26,6 +27,9 @@ public class Main {
 
         //show all data
         sqlDatabase.showAll();
+
+        //convert to array
+        System.out.println(Arrays.toString(sqlDatabase.convertToArray()));
 
 
     }
