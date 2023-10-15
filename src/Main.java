@@ -1,28 +1,37 @@
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        /*
+        Bir reader extension 'ı yazılması gerekiyor (NKReader mesela)
+        dosyadaki bütün kelimeleri okuma yapabilmesi ve arraylist 'e atayabilmesi gerekiyor
+        dosyadan istediğim satır numarasını okuyabilmesi gerekiyor
 
-        Qashqai qashqai = new Qashqai(VehicleType.SUV.toString(), 220, 4, 65, "low fuel warning",
-                false, 21, 0, 30);
+        String 'lerin Split fonksiyonu kullanılmayacak
+        Files.readAllLines kullanılmayacak
+        aşağıdaki gibi bir kod yazabilmeliyim
 
-        //speed Configurations
-        qashqai.speedUp(25);
-        qashqai.speedUp(50);
+        NKReader myReader = new NKReader("C:/dosya.txt");
+        ArrayList<String> kelimeler = myReader.readWords();
+        String satir = myReader.readLineAt(4);
+        */
+        BgReader reader = new BgReader("C:\\Users\\dnzh2\\OneDrive\\Masaüstü\\not.txt");
 
-        //wheel pressure configurations (it will be divided by 2 because of the override method in qashqai class)
-        qashqai.inflateWheels(4);
+        try {
 
-        //you can not set new vehicle type after instance creation because this field is FINAL
-        //qashqai.vehicleType = "sedan";
+            ArrayList<String> kelimeler = reader.readWords();
+            System.out.println(kelimeler);
+
+            System.out.println("***************************");
+
+            String satir = reader.readLineAt(2);
+            System.out.println(satir);
+
+        } catch (IOException e) {
+            System.out.println(e.toString());
+        }
 
 
-        System.out.println(qashqai);
     }
-}
-enum VehicleType{
-    SUV,
-    SEDAN,
-    HATCHBACK,
-    TRUCK,
-    STATION_WAGON
 }
